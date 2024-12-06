@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Asistencia</title>
+</head>
+<body>
+    <h1>Lista de Asistencia</h1>
+
+    <div>
+        <label for="student-name">Nombre del alumno:</label>
+        <input type="text" id="student-name" placeholder="Ej: María Pérez">
+        <button onclick="addStudent()">Agregar Alumno</button>
+    </div>
+
+    <table border="1" id="attendance-table" style="margin-top: 20px; width: 100%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Alumno</th>
+                <th>Asistió</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los alumnos aparecerán aquí -->
+        </tbody>
+    </table>
+
+    <button onclick="downloadCSV()">Descargar Planilla</button>
+
+    <script>
+        const students = [
+            { name: "Juan Pérez", present: false },
+            { name: "María González", present: false },
+            { name: "Carlos López", present: false },
+            { name: "Ana Rodríguez", present: false },
+            { name: "Lucía Martínez", present: false },
+            { name: "Javier Fernández", present: false },
+            { name: "Sofía Torres", present: false },
+            { name: "Mateo Romero", present: false },
+            { name: "Valentina Morales", present: false },
+            { name: "Lucas Gutiérrez", present: false }
+        ];
+
+        function addStudent() {
+            const name = document.getElementById("student-name").value;
+            if (name.trim() === "") {
+                alert("Por favor, ingresa un nombre válido.");
+                return;
+            }
+
+            students.push({ name, present: false });
+            renderTable();
+            document.getElementById("student-name").value = ""; // Limpiar el input
+        }
+
+        function toggleAttendance(index) {
+            students[index].present = !students[index].present;
+            renderTable();
+        }
+
+        function renderTable() {
+            const tableBody = document.getElementById("attendance-table").querySelector("tbody");
+            tableBody.innerHTML = ""; // Limpiar tabla
+
+            students.forEach((student, index) => {
+                const row = document.createElement("tr");
+
+                const nameCell = document.createElement("td");
+                nameCell.textContent = student.name;
+
+                const attendanceCell = document.createElement("td");
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = student.present;
+                checkbox.onclick = () => toggleAttendance(index);
+                attendanceCell.appendChild(checkbox);
+
+                row.appendChild(nameCell);
+                row.appendChild(attendanceCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        function downloadCSV() {
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "Alumno,Asistió\n" 
+                + students.map(student => `${student.name},${student.present ? "Sí" : "No"}`).join("\n");
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "asistencia.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Renderizar tabla con alumnos ficticios al cargar la página
+        window.onload = renderTable;
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Asistencia</title>
+</head>
+<body>
+    <h1>Lista de Asistencia</h1>
+
+    <div>
+        <label for="student-name">Nombre del alumno:</label>
+        <input type="text" id="student-name" placeholder="Ej: María Pérez">
+        <button onclick="addStudent()">Agregar Alumno</button>
+    </div>
+
+    <table border="1" id="attendance-table" style="margin-top: 20px; width: 100%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Alumno</th>
+                <th>Asistió</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los alumnos aparecerán aquí -->
+        </tbody>
+    </table>
+
+    <button onclick="downloadCSV()">Descargar Planilla</button>
+
+    <script>
+        const students = [
+            { name: "Juan Pérez", present: false },
+            { name: "María González", present: false },
+            { name: "Carlos López", present: false },
+            { name: "Ana Rodríguez", present: false },
+            { name: "Lucía Martínez", present: false },
+            { name: "Javier Fernández", present: false },
+            { name: "Sofía Torres", present: false },
+            { name: "Mateo Romero", present: false },
+            { name: "Valentina Morales", present: false },
+            { name: "Lucas Gutiérrez", present: false }
+        ];
+
+        function addStudent() {
+            const name = document.getElementById("student-name").value;
+            if (name.trim() === "") {
+                alert("Por favor, ingresa un nombre válido.");
+                return;
+            }
+
+            students.push({ name, present: false });
+            renderTable();
+            document.getElementById("student-name").value = ""; // Limpiar el input
+        }
+
+        function toggleAttendance(index) {
+            students[index].present = !students[index].present;
+            renderTable();
+        }
+
+        function renderTable() {
+            const tableBody = document.getElementById("attendance-table").querySelector("tbody");
+            tableBody.innerHTML = ""; // Limpiar tabla
+
+            students.forEach((student, index) => {
+                const row = document.createElement("tr");
+
+                const nameCell = document.createElement("td");
+                nameCell.textContent = student.name;
+
+                const attendanceCell = document.createElement("td");
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = student.present;
+                checkbox.onclick = () => toggleAttendance(index);
+                attendanceCell.appendChild(checkbox);
+
+                row.appendChild(nameCell);
+                row.appendChild(attendanceCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        function downloadCSV() {
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "Alumno,Asistió\n" 
+                + students.map(student => `${student.name},${student.present ? "Sí" : "No"}`).join("\n");
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "asistencia.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Renderizar tabla con alumnos ficticios al cargar la página
+        window.onload = renderTable;
+    </script>
+</body>
+</html>
