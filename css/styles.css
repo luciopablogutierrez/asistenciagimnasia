@@ -51,8 +51,8 @@ h2 {
 
 /* Specific Button Styles */
 .button-black {
-  background-color: #000; /* Negro */
-  color: white; /* Texto blanco */
+  background-color: #000;
+  color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
@@ -65,26 +65,13 @@ h2 {
   background-color: #333;
 }
 
-.button-secondary {
-  background-color: #ccc;
-  color: black;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button-secondary:hover {
-  background-color: #aaa;
-}
-
 /* Table styles */
 .responsive-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
+  overflow-x: auto;
+  display: block;
 }
 
 .responsive-table th, .responsive-table td {
@@ -113,6 +100,7 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
@@ -121,6 +109,7 @@ h2 {
   border-radius: 5px;
   width: 90%;
   max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .close {
@@ -131,30 +120,47 @@ h2 {
   cursor: pointer;
 }
 
-/* Media Queries */
+/* Responsive Styles */
 @media (max-width: 768px) {
   .button {
     font-size: 14px;
   }
+
+  .modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
 }
 
 @media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
   .button {
     font-size: 12px;
     padding: 10px 15px;
   }
-}
 
-.pagination button {
-  padding: 5px 10px;
-  margin: 0 2px;
-  border: none;
-  background-color: #f0f0f0;
-  cursor: pointer;
-}
+  .responsive-table th, .responsive-table td {
+    font-size: 12px;
+    padding: 0.5rem;
+  }
 
-.pagination button.active {
-  font-weight: bold;
-  background-color: #007bff;
-  color: white;
+  .modal-content {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
 }
