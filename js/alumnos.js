@@ -9,7 +9,7 @@ checkAuthentication()
     alert(error);
     window.location.href = "index.html"; // Redirigir si no está autorizado
   });
-  
+
 import { db } from "./firebase-config.js";
 import {
   collection,
@@ -95,7 +95,6 @@ function paginateAlumnos(alumnos) {
   alumnosCounter.textContent = `CANTIDAD DE ALUMNOS: ${alumnos.length}`;
 }
 
-
 // Mostrar controles de paginación
 function renderPaginationControls(totalPages) {
   paginationContainer.innerHTML = "";
@@ -121,6 +120,9 @@ function displayAlumnos(alumnos) {
       <tr>
         <td>${alumno.Nombre}</td>
         <td>${alumno.Apellido}</td>
+        <td>${alumno.Fecha_nac ? alumno.Fecha_nac.toDate().toLocaleDateString() : "Sin fecha"}</td>
+        <td>${alumno.Tel || "Sin teléfono"}</td>
+        <td>${alumno.FM ? "Sí" : "No"}</td>
         <td>${alumno.DNI}</td>
         <td>${turnoNombre}</td>
         <td>
@@ -140,15 +142,26 @@ async function handleFormSubmit(event) {
 
   const nombre = form.nombre.value.trim();
   const apellido = form.apellido.value.trim();
+  const fechaNac = form["fecha-nac"].value.trim();
+  const tel = form.tel.value.trim();
+  const fm = form.fm.checked;
   const dni = form.dni.value.trim();
   const turno = form.turno.value.trim();
 
   if (!nombre || !apellido || !dni || !turno) {
-    alert("Todos los campos son obligatorios.");
+    alert("Todos los campos obligatorios deben ser completados.");
     return;
   }
 
-  const data = { Nombre: nombre, Apellido: apellido, DNI: dni, Turnos: turno };
+  const data = {
+    Nombre: nombre,
+    Apellido: apellido,
+    Fecha_nac: fechaNac ? new Date(fechaNac) : null,
+    Tel: tel ? parseInt(tel, 10) : null,
+    FM: fm,
+    DNI: dni,
+    Turnos: turno,
+  };
 
   try {
     if (editing) {
@@ -199,6 +212,9 @@ async function openModal(id = null) {
         const alumno = snapshot.data();
         form.nombre.value = alumno.Nombre;
         form.apellido.value = alumno.Apellido;
+        form["fecha-nac"].value = alumno.Fecha_nac ? alumno.Fecha_nac.toDate().toISOString().split("T")[0] : "";
+        form.tel.value = alumno.Tel || "";
+        form.fm.checked = alumno.FM || false;
         form.dni.value = alumno.DNI;
         form.turno.value = alumno.Turnos;
       } else {
