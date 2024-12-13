@@ -17,13 +17,16 @@
     <!-- Contenedor para Alumnos -->
     <section class="abm-section">
       <h2>Alumnos</h2>
-	  <p id="alumnos-counter">CANTIDAD DE ALUMNOS: 0</p> <!-- Contador -->
+      <p id="alumnos-counter">CANTIDAD DE ALUMNOS: 0</p> <!-- Contador -->
       <button id="add-alumno" class="button">Agregar Alumno</button>
       <table id="alumnos-table" class="responsive-table">
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Fecha Nac</th>
+            <th>Tel</th>
+            <th>FM</th>
             <th>DNI</th>
             <th>Turno</th>
             <th>Acciones</th>
@@ -33,7 +36,7 @@
           <!-- Aquí se cargará la lista de alumnos dinámicamente -->
         </tbody>
       </table>
-	  <div id="pagination-controls" class="pagination"></div>
+      <div id="pagination-controls" class="pagination"></div>
     </section>
 
     <!-- Modal para formularios de Alta/Edición -->
@@ -47,6 +50,15 @@
 
           <label for="apellido">Apellido</label>
           <input type="text" id="apellido" name="apellido" required>
+
+          <label for="fecha-nac">Fecha Nac</label>
+          <input type="date" id="fecha-nac" name="fecha-nac">
+
+          <label for="tel">Tel</label>
+          <input type="tel" id="tel" name="tel">
+
+          <label for="fm">FM</label>
+          <input type="checkbox" id="fm" name="fm">
 
           <label for="dni">DNI</label>
           <input type="number" id="dni" name="dni" required>
@@ -68,3 +80,4 @@
   </main>
 </body>
 </html>
+ 
