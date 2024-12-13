@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Turnos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<script type="module" src="js/firebase-config.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/turnos.js"></script>
+<body>
+  <header>
+    <h1>Gestión de Turnos</h1>
+  </header>
+  <main>
+    <!-- Contenedor para Turnos -->
+    <section class="abm-section">
+      <h2>Turnos</h2>
+      <button id="add-turno" class="button">Agregar Turno</button>
+      <table id="turnos-table" class="responsive-table">
+        <thead>
+          <tr>
+            <th>Turno</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí se cargará la lista de turnos dinámicamente -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Modal para formularios de Alta/Edición -->
+<div id="modal-form" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span> <!-- Ícono para cerrar -->
+    <h3 id="modal-title">Agregar/Editar Turno</h3>
+    <form id="abm-form">
+      <label for="turno">Nombre del Turno</label>
+      <input type="text" id="turno" name="turno" required>
+      <div class="modal-actions">
+        <button type="submit" class="button">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+	<!-- Botón de Volver -->
+    <div class="navigation">
+      <button onclick="location.href='index.html'" class="button button-black">Volver al Inicio</button>
+    </div>
+  </main>
+</body>
+</html>
+
+

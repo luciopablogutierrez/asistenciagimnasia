@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Asistencias</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<script type="module" src="js/firebase-config.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/asistencias.js"></script>
+<body>
+  <header>
+    <h1>Gestión de Asistencias</h1>
+  </header>
+  <main>
+    <!-- Contenedor para Selección -->
+    <section class="asistencias-section">
+      <h2>Registrar Asistencias</h2>
+      <form id="asistencias-form">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="turno">Turno:</label>
+        <select id="turno" name="turno" required>
+          <!-- Turnos se cargarán dinámicamente aquí -->
+        </select>
+      </form>
+    </section>
+
+    <!-- Tabla de Asistencias -->
+    <section class="asistencias-table-section">
+      <h2>Lista de Alumnos</h2>
+      <table id="asistencias-table" class="responsive-table">
+        <thead>
+          <tr>
+            <th>Alumno</th>
+            <th>Asistencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Lista de alumnos cargados dinámicamente -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Mensajes y Loader -->
+    <div id="message-box" class="message"></div>
+    <div id="loader" class="loader" style="display: none;">Cargando...</div>
+
+    <!-- Botón de Guardar -->
+    <div class="actions">
+      <button type="button" id="save-asistencias" class="button">Guardar Asistencias</button>
+    </div>
+
+    <!-- Botón de Volver -->
+    <div class="navigation">
+      <button onclick="location.href='index.html'" class="button button-black">Volver al Inicio</button>
+    </div>
+  </main>
+</body>
+</html>

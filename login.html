@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión</title>
+  <link rel="stylesheet" href="css/styles.css"> <!-- Opcional -->
+</head>
+<body>
+  <header>
+    <h1>Bienvenido</h1>
+    <p>Inicia sesión con tu cuenta de Google para continuar.</p>
+  </header>
+  <main>
+    <button id="login-btn" class="button">Iniciar sesión con Google</button>
+  </main>
+  <footer>
+    <p>&copy; 2024 Tu Proyecto</p>
+  </footer>
+
+  <!-- Firebase Config -->
+  <script type="module" src="js/firebase-config.js"></script>
+
+  <!-- Lógica de inicio de sesión -->
+  <script type="module">
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+
+    // Importar Firebase Auth
+    import { firebaseApp } from "./js/firebase-config.js";
+
+    // Inicializar Firebase Authentication
+    const auth = getAuth(firebaseApp);
+    const provider = new GoogleAuthProvider();
+
+    // Manejar el botón de inicio de sesión
+    document.getElementById("login-btn").addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        console.log("Usuario autenticado:", user.email);
+
+        // Redirigir al sistema principal si el inicio de sesión es exitoso
+        window.location.href = "index.html"; 
+      } catch (error) {
+        console.error("Error al iniciar sesión:", error);
+        alert("Error al iniciar sesión. Inténtalo nuevamente.");
+      }
+    });
+  </script>
+</body>
+</html>
