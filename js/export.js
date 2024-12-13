@@ -71,14 +71,14 @@ async function exportAlumnos() {
         Nombre: data.Nombre,
         Apellido: data.Apellido,
         "Fecha Nac": data.Fecha_nac ? new Date(data.Fecha_nac.seconds * 1000).toLocaleDateString() : "Sin fecha",
+        DNI: data.DNI,
         Tel: data.Tel || "Sin teléfono",
         FM: data.FM ? "Sí" : "No",
-        DNI: data.DNI,
         Turno: allTurnos[data.Turnos] || "Turno no encontrado", // Reemplazar ID por Nombre
       };
     });
 
-    const headers = ["Nombre", "Apellido", "Fecha Nac", "Tel", "FM", "DNI", "Turno"];
+    const headers = ["Nombre", "Apellido", "Fecha Nac", "DNI", "Tel", "FM", "Turno"];
     const csvData = convertToCSV(alumnos, headers);
     downloadCSV(csvData, "alumnos.csv");
   } catch (error) {
