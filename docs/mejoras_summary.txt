@@ -30,3 +30,10 @@ MEJORAS IMPLEMENTADAS EN LOS ARCHIVOS:
 
 9. Código documentado:
    - Comentarios claros en cada función para facilitar la comprensión y mantenimiento.
+
+10 mejoras css:
+
+- Ajustar las tablas para que se adapten correctamente en pantallas pequeñas.
+- Mejorar el diseño del modal para pantallas más chicas.
+- Asegurar que todos los botones y textos se escalen correctamente en dispositivos móviles.
+- Incluir reglas de CSS adicionales para mejorar la experiencia en pantallas pequeñas (por ejemplo, móviles de 320px a 480px).
