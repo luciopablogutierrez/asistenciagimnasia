@@ -212,7 +212,9 @@ async function openModal(id = null) {
         const alumno = snapshot.data();
         form.nombre.value = alumno.Nombre;
         form.apellido.value = alumno.Apellido;
-        form["fecha-nac"].value = alumno.Fecha_nac ? new Date(alumno.Fecha_nac).toISOString().split("T")[0] : "";
+        form["fecha-nac"].value = alumno.Fecha_nac && !isNaN(Date.parse(alumno.Fecha_nac)) 
+  ? new Date(alumno.Fecha_nac).toISOString().split("T")[0] 
+  : "";
         form.tel.value = alumno.Tel || "";
         form.fm.checked = alumno.FM || false;
         form.dni.value = alumno.DNI;
