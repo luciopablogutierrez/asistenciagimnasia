@@ -120,7 +120,7 @@ function displayAlumnos(alumnos) {
       <tr>
         <td>${alumno.Nombre}</td>
         <td>${alumno.Apellido}</td>
-        <td>${alumno.Fecha_nac ? new Date(alumno.Fecha_nac).toLocaleDateString() : "Sin fecha"}</td>
+        <td>${alumno.Fecha_nac ? alumno.Fecha_nac.toDate().toLocaleDateString() : "Sin fecha"}</td>
         <td>${alumno.Tel || "Sin teléfono"}</td>
         <td>${alumno.FM ? "Sí" : "No"}</td>
         <td>${alumno.DNI}</td>
@@ -212,9 +212,7 @@ async function openModal(id = null) {
         const alumno = snapshot.data();
         form.nombre.value = alumno.Nombre;
         form.apellido.value = alumno.Apellido;
-        form["fecha-nac"].value = alumno.Fecha_nac && !isNaN(Date.parse(alumno.Fecha_nac)) 
-  ? new Date(alumno.Fecha_nac).toISOString().split("T")[0] 
-  : "";
+        form["fecha-nac"].value = alumno.Fecha_nac ? alumno.Fecha_nac.toDate().toISOString().split("T")[0] : "";
         form.tel.value = alumno.Tel || "";
         form.fm.checked = alumno.FM || false;
         form.dni.value = alumno.DNI;
