@@ -120,7 +120,7 @@ function displayAlumnos(alumnos) {
       <tr>
         <td>${alumno.Nombre}</td>
         <td>${alumno.Apellido}</td>
-        <td>${alumno.Fecha_nac ? alumno.Fecha_nac.toDate().toLocaleDateString() : "Sin fecha"}</td>
+        <td>${alumno.Fecha_nac ? new Date(alumno.Fecha_nac).toLocaleDateString() : "Sin fecha"}</td>
         <td>${alumno.Tel || "Sin teléfono"}</td>
         <td>${alumno.FM ? "Sí" : "No"}</td>
         <td>${alumno.DNI}</td>
