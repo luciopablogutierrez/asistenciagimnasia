@@ -3,22 +3,25 @@ name: Deploy Firebase App
 on:
   push:
     branches:
-      - main  # Ejecuta el workflow cuando hay un push en la rama 'main'
+      - main  # Ejecuta el workflow cuando se hace push en la rama main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Utiliza una máquina Ubuntu para correr el workflow
+    runs-on: ubuntu-latest  # Utiliza una máquina virtual con Ubuntu
 
     steps:
+      # 1. Checkout del código
       - name: Checkout code
-        uses: actions/checkout@v3  # Obtiene el código del repositorio
+        uses: actions/checkout@v3
 
+      # 2. Configurar Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16  # Configura la versión de Node.js
 
-      - name: Replace Secrets in Config
+      # 3. Reemplazar placeholders con los secrets
+      - name: Reemplazar secretos en firebase-config.js
         env:
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
           FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
@@ -36,8 +39,17 @@ jobs:
           sed -i "s|\${{ secrets.FIREBASE_APP_ID }}|$FIREBASE_APP_ID|g" ./firebase-config.js
           sed -i "s|\${{ secrets.FIREBASE_MEASUREMENT_ID }}|$FIREBASE_MEASUREMENT_ID|g" ./firebase-config.js
 
+      # 4. Instalar dependencias
       - name: Install dependencies
-        run: npm install  # Instala las dependencias del proyecto
+        run: npm install
 
-      - name: Build and Deploy
-        run: npm run build  # Construye la aplicación (ajusta según tu proyecto)
+      # 5. Build del proyecto
+      - name: Build project
+        run: npm run build  # Ajustá este comando si tu proyecto usa otro script para compilar
+
+      # 6. (Opcional) Subir los archivos compilados
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # Cambiá ./dist si tu build genera otro directorio
