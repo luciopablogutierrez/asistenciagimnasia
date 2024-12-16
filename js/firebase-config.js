@@ -4,13 +4,13 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/9.17.2/firebase
 
 // Configuración de Firebase (estos valores se reemplazarán en el build de GitHub Actions)
 const firebaseConfig = {
-  apiKey: "${{ secrets.FIREBASE_API_KEY }}",
-  authDomain: "${{ secrets.FIREBASE_AUTH_DOMAIN }}",
-  projectId: "${{ secrets.FIREBASE_PROJECT_ID }}",
-  storageBucket: "${{ secrets.FIREBASE_STORAGE_BUCKET }}",
-  messagingSenderId: "${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}",
-  appId: "${{ secrets.FIREBASE_APP_ID }}",
-  measurementId: "${{ secrets.FIREBASE_MEASUREMENT_ID }}",
+  apiKey: "AIzaSyB-Kkwy4uUMamPS95lTRFb7WlL6-ZhsrmA",  
+  authDomain: "asistencia-d91af.firebaseapp.com",
+  projectId: "asistencia-d91af",
+  storageBucket: "asistencia-d91af.firebasestorage.app",
+  messagingSenderId: "730285026746",
+  appId: "1:730285026746:web:599bb94f8b4045198f8183",
+  measurementId: "G-HSEY348Z8F"
 };
 
 // Inicializar Firebase
