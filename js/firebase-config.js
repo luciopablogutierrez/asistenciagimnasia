@@ -3,6 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 const firebaseConfig = {
+  // Obtiene la clave API desde las variables de entorno para evitar exponerla directamente en el código
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "asistencia-d91af.firebaseapp.com",
   projectId: "asistencia-d91af",
