@@ -7,6 +7,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #e4f2ff, #d8b4fe);
+  color: #333;
+  text-align: center;
 }
 
 /* Header styles */
@@ -25,6 +29,26 @@ h1, h2 {
 
 h2 {
   margin: 1rem 0;
+}
+
+header img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
 }
 
 /* Button styles */
@@ -163,4 +187,16 @@ h2 {
   h2 {
     font-size: 1.25rem;
   }
+}
+
+footer {
+  position: fixed;
+  bottom: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #777;
+}
+
+footer p {
+  margin: 0;
 }
