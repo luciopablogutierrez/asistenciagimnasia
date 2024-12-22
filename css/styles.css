@@ -14,30 +14,29 @@
   --text-color: #000;
   --white-color: #fff;
   --modal-background: rgba(0, 0, 0, 0.5);
+  --gradient-start: #6a11cb;
+  --gradient-end: #2575fc;
 }
 
 /* General styles */
 body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #e4f2ff, #d8b4fe);
-  color: #333;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: var(--white-color);
   text-align: center;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 /* Header styles */
 header {
   text-align: center;
   margin-bottom: 2rem;
-  padding: 20px;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header img {
@@ -50,15 +49,15 @@ header img {
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   margin: 0;
 }
 
 header p {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 400;
-  color: #555;
+  color: var(--white-color);
 }
 
 h1, h2 {
@@ -71,25 +70,27 @@ h2 {
 
 /* Button styles */
 .button {
-  width: 100%;
-  padding: 15px 20px;
+  width: auto;
+  padding: 1rem 2rem;
   margin: 10px 0;
-  font-size: 16px;
+  font-size: 1.25rem;
   background-color: var(--primary-color);
   color: var(--white-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
   background-color: var(--primary-color-dark);
+  transform: translateY(-2px);
 }
 
 .button:active {
   background-color: var(--primary-color-darker);
+  transform: translateY(0);
 }
 
 /* Specific Button Styles */
@@ -98,14 +99,20 @@ h2 {
   color: var(--white-color);
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s;
 }
 
 .button-black:hover {
   background-color: #333;
+  transform: translateY(-2px);
+}
+
+.button-black:active {
+  background-color: #000;
+  transform: translateY(0);
 }
 
 /* Table styles */
@@ -166,7 +173,8 @@ h2 {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .button {
-    font-size: 14px;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 
   .modal-content {
@@ -181,12 +189,12 @@ h2 {
   }
 
   .button {
-    font-size: 12px;
-    padding: 10px 15px;
+    font-size: 0.875rem;
+    padding: 0.8rem 1rem;
   }
 
   .responsive-table th, .responsive-table td {
-    font-size: 12px;
+    font-size: 0.875rem;
     padding: 0.5rem;
   }
 
@@ -200,7 +208,7 @@ h2 {
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   h2 {
@@ -213,7 +221,7 @@ footer {
   bottom: 1rem;
   text-align: center;
   font-size: 0.875rem;
-  color: #777;
+  color: var(--white-color);
 }
 
 footer p {
