@@ -58,11 +58,11 @@
           <input type="checkbox" id="fm" name="fm">
 
           <label for="dni">DNI</label>
-          <input type="number" id="dni" name="dni" required min="1000000" max="99999999">
+          <input type="number" id="dni" name="dni" required min="1000000" max="99999999" pattern="\d{7,8}">
 
           <label for="turno-select">Turno</label>
           <select id="turno-select" name="turno" required>
-            <!-- Options will be populated dynamically -->
+            <!-- Options will be populated dynamically using JavaScript in alumnos.js -->
           </select>
 
           <button type="submit" class="button">Guardar</button>
@@ -72,7 +72,7 @@
 
     <!-- Botón de Volver -->
     <div class="navigation">
-      <button onclick="location.href='home.html'" class="button button-black">Volver al Inicio</button>
+      <button id="back-button" class="button button-black">Volver al Inicio</button>
     </div>
 </main>
 <script type="module" src="js/firebase-config.js"></script>

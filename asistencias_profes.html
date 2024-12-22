@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestión de Asistencias Profesores</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/asistencias_profes.js"></script>
 </head>
-<script type="module" src="js/firebase-config.js"></script>
-<script type="module" src="js/auth.js"></script>
-<script type="module" src="js/asistencias_profes.js"></script>
 <body>
   <header>
     <h1>Gestión de Asistencias de Profesores</h1>
@@ -46,7 +46,7 @@
 
     <!-- Mensajes y Loader -->
     <div id="message-box" class="message"></div>
-    <div id="loader" class="loader" style="display: none;">Cargando...</div>
+    <div id="loader" class="loader">Cargando...</div>
 
     <!-- Botón de Guardar -->
     <div class="actions">

@@ -80,7 +80,7 @@
 </head>
 <body>
   <header>
-    <img src="./images/favicon.ico" alt="Icono de Gimnasia Artística">
+    <img src="./images/header-image.jpg" alt="Icono de Gimnasia Artística">
     <h1>Bienvenid@</h1>
     <p>Inicia sesión con tu cuenta de Google para continuar.</p>
   </header>
@@ -88,7 +88,7 @@
     <button id="login-btn" class="button">Iniciar sesión con Google</button>
   </main>
   <footer>
-    <p>&copy; 2024 Sistema de Asistencia de Gimnasia Artística</p>
+    <p>&copy; <span id="current-year"></span> Sistema de Asistencia de Gimnasia Artística</p>
   </footer>
 
   <!-- Firebase Config -->
@@ -110,15 +110,17 @@
       try {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
-        console.log("Authenticated user:", user.email);
+        // console.log("Authenticated user:", user.email);
 
         // Redirigir al sistema principal si el inicio de sesión es exitoso
         window.location.href = "home.html"; 
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
-        alert("Error signing in. Please try again.");
+        alert("Error al iniciar sesión. Por favor, inténtelo de nuevo.");
       }
     });
+    // Set the current year in the footer
+    document.getElementById("current-year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
