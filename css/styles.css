@@ -14,15 +14,15 @@
   --text-color: #000;
   --white-color: #fff;
   --modal-background: rgba(0, 0, 0, 0.5);
-  --gradient-start: #6a11cb;
-  --gradient-end: #2575fc;
+  --gradient-start: #e4f2ff;
+  --gradient-end: #d8b4fe;
 }
 
 /* General styles */
 body {
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  color: var(--white-color);
+  color: var(--text-color);
   text-align: center;
   margin: 0;
   padding: 0;
@@ -49,15 +49,15 @@ header img {
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
 }
 
 header p {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 400;
-  color: var(--white-color);
+  color: #555;
 }
 
 h1, h2 {
@@ -221,7 +221,7 @@ footer {
   bottom: 1rem;
   text-align: center;
   font-size: 0.875rem;
-  color: var(--white-color);
+  color: #777;
 }
 
 footer p {
