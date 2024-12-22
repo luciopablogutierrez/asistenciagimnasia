@@ -19,12 +19,17 @@
       <button id="export-alumnos" class="button">Exportar Alumnos</button>
       <button id="export-profesores" class="button">Exportar Profesores</button>
       <button id="export-asistencias" class="button">Exportar Asistencias Alumnos</button>
-    <button id="export-asistencias-profesores" class="button">Exportar Asistencias Profesores</button>
+      <button id="export-asistencias-profesores" class="button">Exportar Asistencias Profesores</button>
     </section>
 	<!-- Botón de Volver -->
     <div class="navigation">
       <button id="back-home" class="button button-black">Volver al Inicio</button>
     </div>
   </main>
+  <script>
+    document.getElementById("back-home").addEventListener("click", () => {
+      window.location.href = "home.html";
+    });
+  </script>
 </body>
 </html>
