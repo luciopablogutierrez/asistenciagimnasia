@@ -1,34 +1,43 @@
-/* General styles */
-body {
-  font-family: Arial, sans-serif;
+/* CSS Reset */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+  --primary-color: #007bff;
+  --primary-color-dark: #0056b3;
+  --primary-color-darker: #004085;
+  --background-color: #f8f8f8;
+  --text-color: #000;
+  --white-color: #fff;
+  --modal-background: rgba(0, 0, 0, 0.5);
+}
+
+/* General styles */
+body {
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, #e4f2ff, #d8b4fe);
   color: #333;
   text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Header styles */
 header {
   text-align: center;
+  margin-bottom: 2rem;
   padding: 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white-color);
   width: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-  margin: 0;
-}
-
-h2 {
-  margin: 1rem 0;
 }
 
 header img {
@@ -43,6 +52,7 @@ header img {
 header h1 {
   font-size: 2.5rem;
   font-weight: 700;
+  margin: 0;
 }
 
 header p {
@@ -51,32 +61,41 @@ header p {
   color: #555;
 }
 
+h1, h2 {
+  margin: 0;
+}
+
+h2 {
+  margin: 1rem 0;
+}
+
 /* Button styles */
 .button {
   width: 100%;
   padding: 15px 20px;
   margin: 10px 0;
   font-size: 16px;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-color-dark);
 }
 
 .button:active {
-  background-color: #004085;
+  background-color: var(--primary-color-darker);
 }
 
 /* Specific Button Styles */
 .button-black {
-  background-color: #000;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--white-color);
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
@@ -104,8 +123,8 @@ header p {
 }
 
 .responsive-table th {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white-color);
   text-align: center;
 }
 
@@ -121,14 +140,14 @@ header p {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--modal-background);
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--white-color);
   padding: 2rem;
   border-radius: 5px;
   width: 90%;
