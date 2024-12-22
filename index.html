@@ -66,7 +66,7 @@
     }
 
     footer {
-      position: absolute;
+      position: fixed;
       bottom: 1rem;
       text-align: center;
       font-size: 0.875rem;
@@ -80,7 +80,7 @@
 </head>
 <body>
   <header>
-    <img src="./css/favicon.ico" alt="Icono de Gimnasia Artística">
+    <img src="./images/favicon.ico" alt="Icono de Gimnasia Artística">
     <h1>Bienvenid@</h1>
     <p>Inicia sesión con tu cuenta de Google para continuar.</p>
   </header>
@@ -110,13 +110,13 @@
       try {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
-        console.log("Usuario autenticado:", user.email);
+        console.log("Authenticated user:", user.email);
 
         // Redirigir al sistema principal si el inicio de sesión es exitoso
         window.location.href = "home.html"; 
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
-        alert("Error al iniciar sesión. Inténtalo nuevamente.");
+        alert("Error signing in. Please try again.");
       }
     });
   </script>
