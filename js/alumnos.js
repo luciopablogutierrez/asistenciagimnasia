@@ -1,15 +1,4 @@
 import { checkAuthentication } from "./auth.js";
-
-checkAuthentication()
-  .then(user => {
-    console.log(`Bienvenido, ${user.email}`);
-    document.querySelector("main").style.display = "block"; // Mostrar contenido
-  })
-  .catch(error => {
-    alert(error);
-    window.location.href = "index.html"; // Redirigir si no está autorizado
-  });
-
 import { db } from "./firebase-config.js";
 import {
   collection,
@@ -21,11 +10,22 @@ import {
   getDoc
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
-// Referencias a las colecciones
+// Check authentication
+checkAuthentication()
+  .then(user => {
+    console.log(`Bienvenido, ${user.email}`);
+    document.querySelector("main").style.display = "block"; // Mostrar contenido
+  })
+  .catch(error => {
+    alert(error);
+    window.location.href = "index.html"; // Redirigir si no está autorizado
+  });
+
+// References to collections
 const alumnosRef = collection(db, "Alumnos");
 const turnosRef = collection(db, "Turnos");
 
-// Elementos del DOM
+// DOM elements
 const alumnosTableBody = document.querySelector("#alumnos-table tbody");
 const modal = document.querySelector("#modal-form");
 const form = document.querySelector("#abm-form");
@@ -35,33 +35,39 @@ const closeModalButton = document.querySelector(".close");
 const paginationContainer = document.querySelector("#pagination-controls");
 const alumnosCounter = document.getElementById("alumnos-counter");
 
+if (!alumnosTableBody || !modal || !form || !turnoSelect || !modalTitle || !closeModalButton || !paginationContainer || !alumnosCounter) {
+  console.error("Error: Missing DOM elements.");
+  alert("Hubo un error al cargar la página. Por favor, inténtelo de nuevo.");
+  throw new Error("Missing DOM elements.");
+}
+
 let editing = false;
 let editingId = null;
 let allTurnos = {}; // Mapeo de IDs de turnos a nombres
 let allAlumnos = []; // Lista completa de alumnos para la paginación
 
-// Variables para la paginación
+// Variables for pagination
 let currentPage = 1;
 const recordsPerPage = 10;
 
-// Cargar turnos y llenar el select dinámicamente
+// Load turnos and fill the select dynamically
 async function loadTurnos() {
   try {
     const snapshot = await getDocs(turnosRef);
-    turnoSelect.innerHTML = ""; // Limpia el select antes de llenarlo
+    turnoSelect.innerHTML = ""; // Clear the select before filling it
 
     snapshot.docs.forEach(doc => {
       const turno = doc.data();
-      allTurnos[doc.id] = turno.Turno; // Mapeo ID -> Nombre
+      allTurnos[doc.id] = turno.Turno; // Map ID -> Name
       turnoSelect.innerHTML += `<option value="${doc.id}">${turno.Turno}</option>`;
     });
   } catch (error) {
-    console.error("Error cargando turnos:", error);
+    console.error("Error loading turnos:", error);
     alert("Hubo un error al cargar los turnos.");
   }
 }
 
-// Cargar alumnos desde Firestore y ordenarlos por apellido de forma ascendente
+// Load alumnos from Firestore and sort them by apellido in ascending order
 async function loadAlumnos() {
   try {
     const snapshot = await getDocs(alumnosRef);
@@ -70,18 +76,18 @@ async function loadAlumnos() {
       ...doc.data()
     }));
 
-    // Ordenar por apellido de manera ascendente
+    // Sort by apellido in ascending order
     alumnos.sort((a, b) => a.Apellido.localeCompare(b.Apellido));
 
-    allAlumnos = alumnos; // Guardar todos los alumnos en una variable global
-    paginateAlumnos(alumnos); // Llamar a la función de paginación
+    allAlumnos = alumnos; // Save all alumnos in a global variable
+    paginateAlumnos(alumnos); // Call the pagination function
   } catch (error) {
-    console.error("Error cargando alumnos:", error);
+    console.error("Error loading alumnos:", error);
     alert("Hubo un error al cargar los alumnos.");
   }
 }
 
-// Función para manejar la paginación
+// Function to handle pagination
 function paginateAlumnos(alumnos) {
   const totalPages = Math.ceil(alumnos.length / recordsPerPage);
   const startIndex = (currentPage - 1) * recordsPerPage;
@@ -91,11 +97,11 @@ function paginateAlumnos(alumnos) {
   displayAlumnos(alumnosToDisplay);
   renderPaginationControls(totalPages);
 
-  // Actualizar contador de alumnos
+  // Update alumnos counter
   alumnosCounter.textContent = `CANTIDAD DE ALUMNOS: ${alumnos.length}`;
 }
 
-// Mostrar controles de paginación
+// Display pagination controls
 function renderPaginationControls(totalPages) {
   paginationContainer.innerHTML = "";
 
@@ -111,7 +117,7 @@ function renderPaginationControls(totalPages) {
   }
 }
 
-// Mostrar alumnos en la tabla
+// Display alumnos in the table
 function displayAlumnos(alumnos) {
   alumnosTableBody.innerHTML = alumnos
     .map(alumno => {
@@ -136,7 +142,7 @@ function displayAlumnos(alumnos) {
   attachEventListeners();
 }
 
-// Manejar formulario (Agregar/Editar)
+// Handle form submission (Add/Edit)
 async function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -174,12 +180,12 @@ async function handleFormSubmit(event) {
     closeModal();
     loadAlumnos();
   } catch (error) {
-    console.error("Error al guardar el alumno:", error);
+    console.error("Error saving alumno:", error);
     alert("Hubo un error al guardar el alumno.");
   }
 }
 
-// Eliminar un alumno
+// Delete an alumno
 async function handleDelete(event) {
   const id = event.target.dataset.id;
 
@@ -189,19 +195,19 @@ async function handleDelete(event) {
       await deleteDoc(docRef);
       loadAlumnos();
     } catch (error) {
-      console.error("Error al eliminar el alumno:", error);
+      console.error("Error deleting alumno:", error);
       alert("Hubo un error al eliminar el alumno.");
     }
   }
 }
 
-// Abrir modal
+// Open modal
 async function openModal(id = null) {
   editing = !!id;
   editingId = id;
   modalTitle.textContent = editing ? "Editar Alumno" : "Agregar Alumno";
 
-  await loadTurnos(); // Cargar turnos antes de abrir el modal
+  await loadTurnos(); // Load turnos before opening the modal
 
   if (editing) {
     try {
@@ -221,7 +227,7 @@ async function openModal(id = null) {
         alert("El documento no existe.");
       }
     } catch (error) {
-      console.error("Error obteniendo el alumno:", error);
+      console.error("Error getting alumno:", error);
       alert("Hubo un error al obtener los datos del alumno.");
     }
   } else {
@@ -231,7 +237,7 @@ async function openModal(id = null) {
   modal.style.display = "flex";
 }
 
-// Cerrar modal sin guardar
+// Close modal without saving
 function closeModal() {
   modal.style.display = "none";
   editing = false;
@@ -239,7 +245,7 @@ function closeModal() {
   form.reset();
 }
 
-// Adjuntar eventos dinámicos
+// Attach dynamic events
 function attachEventListeners() {
   document.querySelectorAll(".edit").forEach(button => {
     button.addEventListener("click", event => openModal(event.target.dataset.id));
@@ -250,10 +256,10 @@ function attachEventListeners() {
   });
 }
 
-// Eventos globales
+// Global events
 document.querySelector("#add-alumno").addEventListener("click", () => openModal());
 form.addEventListener("submit", handleFormSubmit);
 closeModalButton.addEventListener("click", closeModal);
 
-// Inicializar
+// Initialize
 loadTurnos().then(loadAlumnos);
