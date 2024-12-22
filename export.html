@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exportar Datos</title>
   <link rel="stylesheet" href="css/styles.css">
-  <script type="module" src="js/firebase-config.js"></script>
-  <script type="module" src="js/auth.js"></script>
-  <script type="module" src="js/export.js"></script>
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
@@ -69,10 +66,8 @@
   <footer>
     <button onclick="location.href='home.html'" class="button button-black">Volver</button>
   </footer>
-  <script>
-    document.getElementById("back-home").addEventListener("click", () => {
-      window.location.href = "home.html";
-    });
-  </script>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/export.js"></script>
 </body>
 </html>

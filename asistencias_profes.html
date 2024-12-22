@@ -51,6 +51,20 @@
     .button-black:hover {
       background-color: #000;
     }
+    .responsive-table {
+      width: 100%;
+      max-width: 800px;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .responsive-table th {
+      background-color: #f2f2f2;
+    }
   </style>
 </head>
 <body>
@@ -100,5 +114,8 @@
   <footer>
     <button onclick="location.href='home.html'" class="button button-black">Volver</button>
   </footer>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/asistencias_profes.js"></script>
 </body>
 </html>
