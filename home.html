@@ -36,7 +36,6 @@
       align-items: center;
     }
     .button {
-      background-color: #4285f4;
       color: white;
       border: none;
       padding: 15px 30px;
@@ -49,7 +48,16 @@
       text-align: center;
     }
     .button:hover {
-      background-color: #357ae8;
+      opacity: 0.9;
+    }
+    .button-group-1 {
+      background-color: #4285f4;
+    }
+    .button-group-2 {
+      background-color: #34a853;
+    }
+    .button-group-3 {
+      background-color: #fbbc05;
     }
     .button-black {
       background-color: #333;
@@ -75,12 +83,12 @@
   </header>
   <main>
     <section class="button-container">
-      <button onclick="location.href='turnos.html'" class="button">Gestión de Turnos</button>
-      <button onclick="location.href='alumnos.html'" class="button">Gestión de Alumnos</button>
-      <button onclick="location.href='profesores.html'" class="button">Gestión de Profesores</button>
-      <button onclick="location.href='asistencias.html'" class="button">Asistencias Alumno</button>
-	  <button onclick="location.href='asistencias_profes.html'" class="button">Asistencias Profesores</button>
-      <button onclick="location.href='export.html'" class="button">Exportar</button>
+      <button onclick="location.href='turnos.html'" class="button button-group-1">Gestión de Turnos</button>
+      <button onclick="location.href='alumnos.html'" class="button button-group-1">Gestión de Alumnos</button>
+      <button onclick="location.href='profesores.html'" class="button button-group-1">Gestión de Profesores</button>
+      <button onclick="location.href='asistencias.html'" class="button button-group-2">Asistencias Alumno</button>
+	  <button onclick="location.href='asistencias_profes.html'" class="button button-group-2">Asistencias Profesores</button>
+      <button onclick="location.href='export.html'" class="button button-group-3">Exportar</button>
     </section>
   </main>
   <script type="module" src="/js/auth.js"></script>
