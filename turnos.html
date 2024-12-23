@@ -26,8 +26,12 @@
       font-size: 2.5em;
       margin: 0;
     }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .button {
-      background-color: #4285f4;
       color: white;
       border: none;
       padding: 15px 30px;
@@ -36,11 +40,15 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       margin: 10px 0;
-      width: 200px;
+      width: 100%;
+      max-width: 300px;
       text-align: center;
     }
     .button:hover {
-      background-color: #357ae8;
+      opacity: 0.9;
+    }
+    .button-group-1 {
+      background-color: #4285f4;
     }
     .button-black {
       background-color: #333;
@@ -55,12 +63,12 @@
       margin: 20px 0;
     }
     .responsive-table th, .responsive-table td {
-      border: 1px solid #000;
+      border: 1px solid #ddd;
       padding: 8px;
       text-align: left;
     }
     .responsive-table th {
-      background-color: #000;
+      background-color: #f2f2f2;
     }
     .modal {
       display: none;
@@ -95,8 +103,15 @@
       text-decoration: none;
       cursor: pointer;
     }
-    footer {
-      margin-top: 20px;
+    @media (min-width: 600px) {
+      .button-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .button {
+        margin: 10px;
+      }
     }
   </style>
 </head>
@@ -105,10 +120,10 @@
     <h1>Gestión de Turnos</h1>
   </header>
   <main>
-    <!-- Contenedor para Turnos -->
+    <section class="button-container">
+      <button id="add-turno" class="button button-group-1">Agregar Turno</button>
+    </section>
     <section class="abm-section">
-      <h2>Turnos</h2>
-      <button id="add-turno" class="button">Agregar Turno</button>
       <table id="turnos-table" class="responsive-table">
         <thead>
           <tr>
@@ -130,7 +145,7 @@
         <form id="abm-form">
           <label for="turno">Nombre del Turno</label>
           <input type="text" id="turno" name="turno" required>
-          <button type="submit" class="button">Guardar</button>
+          <button type="submit" class="button button-group-1">Guardar</button>
         </form>
       </div>
     </div>
