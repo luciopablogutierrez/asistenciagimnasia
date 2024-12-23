@@ -26,8 +26,12 @@
       font-size: 2.5em;
       margin: 0;
     }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .button {
-      background-color: #4285f4;
       color: white;
       border: none;
       padding: 15px 30px;
@@ -36,17 +40,28 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       margin: 10px 0;
-      width: 200px;
+      width: 100%;
+      max-width: 300px;
       text-align: center;
     }
     .button:hover {
-      background-color: #357ae8;
+      opacity: 0.9;
     }
     .button-black {
       background-color: #333;
     }
     .button-black:hover {
       background-color: #000;
+    }
+    @media (min-width: 600px) {
+      .button-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .button {
+        margin: 10px;
+      }
     }
   </style>
 </head>
@@ -55,7 +70,7 @@
     <h1>Exportar Datos</h1>
   </header>
   <main>
-    <section class="export-section">
+    <section class="button-container">
       <h2>Seleccione qué datos desea exportar:</h2>
       <button id="export-alumnos" class="button">Exportar Alumnos</button>
       <button id="export-profesores" class="button">Exportar Profesores</button>
