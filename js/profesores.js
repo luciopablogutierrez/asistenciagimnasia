@@ -7,7 +7,7 @@ checkAuthentication()
   })
   .catch(error => {
     alert(error);
-    window.location.href = "index.html"; // Redirigir si no está autorizado
+    window.location.href = "login.html"; // Redirigir si no está autorizado
   });
   
 import { db } from "./firebase-config.js";
