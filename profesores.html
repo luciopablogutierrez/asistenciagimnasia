@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de Profesores</title>
+  <title>ABM de Profesores</title>
   <link rel="stylesheet" href="css/styles.css">
-  <style>
+</head>
+<style>
+
     body {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
@@ -62,8 +64,11 @@
     .responsive-table th {
       background-color: #000;
     }
-  </style>
-</head>
+  
+</style>
+<script type="module" src="js/firebase-config.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/profesores.js"></script>
 <body>
   <header>
     <h1>Gestión de Profesores</h1>
@@ -78,9 +83,8 @@
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Especialidad</th>
-            <th>Tel</th>
-            <th>Email</th>
+            <th>DNI</th>
+            <th>Turno</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -88,7 +92,6 @@
           <!-- Aquí se cargará la lista de profesores dinámicamente -->
         </tbody>
       </table>
-      <div id="pagination-controls" class="pagination"></div>
     </section>
 
     <!-- Modal para formularios de Alta/Edición -->
@@ -103,25 +106,23 @@
           <label for="apellido">Apellido</label>
           <input type="text" id="apellido" name="apellido" required>
 
-          <label for="especialidad">Especialidad</label>
-          <input type="text" id="especialidad" name="especialidad" required>
+          <label for="dni">DNI</label>
+          <input type="number" id="dni" name="dni" required>
 
-          <label for="tel">Tel</label>
-          <input type="tel" id="tel" name="tel" required>
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <label for="turno">Turno</label>
+          <select id="turno-select" name="turno" required>
+            <!-- Turnos se cargarán dinámicamente -->
+          </select>
 
           <button type="submit" class="button">Guardar</button>
         </form>
       </div>
     </div>
+
+    <!-- Botón de Volver -->
+    <div class="navigation">
+      <button onclick="location.href='index.html'" class="button button-black">Volver al Inicio</button>
+    </div>
   </main>
-  <footer>
-    <button onclick="location.href='home.html'" class="button button-black">Volver</button>
-  </footer>
-  <script type="module" src="js/firebase-config.js"></script>
-  <script type="module" src="js/auth.js"></script>
-  <script type="module" src="js/profesores.js"></script>
 </body>
 </html>
