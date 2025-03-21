@@ -156,7 +156,38 @@
           <!-- Aquí se cargará la lista de turnos dinámicamente -->
         </tbody>
       </table>
+      <!-- Add pagination controls -->
+      <div id="pagination-controls" class="pagination"></div>
     </section>
+
+    <!-- Add pagination styles -->
+    <style>
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .pagination button {
+        padding: 5px 10px;
+        border: 1px solid #4285f4;
+        background: white;
+        color: #4285f4;
+        cursor: pointer;
+        border-radius: 3px;
+      }
+
+      .pagination button.active {
+        background: #4285f4;
+        color: white;
+      }
+
+      .pagination button:hover {
+        background: #357ae8;
+        color: white;
+      }
+    </style>
 
     <!-- Modal para formularios de Alta/Edición -->
     <div id="modal-form" class="modal">
