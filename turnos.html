@@ -13,8 +13,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
+      min-height: 100vh; /* Changed from height to min-height */
       background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
       color: #333;
     }
@@ -113,29 +112,28 @@
         margin: 10px;
       }
     }
-    <style>
-        /* Add margin to create space between table and button */
-        .navigation {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    
-        /* Remove any fixed positioning if present */
-        .button {
-            display: block;
-            margin: 10px auto;
-        }
-    
-        /* Ensure the main content flows properly */
-        main {
-            padding: 20px;
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    </style>
+    /* Add these styles directly in the main style tag */
+    .navigation {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    main {
+      padding: 20px;
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+    footer {
+      padding: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
