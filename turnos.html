@@ -118,97 +118,105 @@
       margin-bottom: 20px;
     }
 
-    main {
-      padding: 20px;
-      width: 100%;
-      max-width: 800px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-    }
-
-    footer {
-      padding: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Gestión de Turnos</h1>
-  </header>
-  <main>
-    <section class="button-container">
-      <button id="add-turno" class="button button-group-1">Agregar Turno</button>
-    </section>
-    <section class="abm-section">
-      <table id="turnos-table" class="responsive-table">
-        <thead>
-          <tr>
-            <th>Turno</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Aquí se cargará la lista de turnos dinámicamente -->
-        </tbody>
-      </table>
-      <!-- Add pagination controls -->
-      <div id="pagination-controls" class="pagination"></div>
-    </section>
-
-    <!-- Add pagination styles -->
     <style>
-      .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin: 20px 0;
-      }
-
-      .pagination button {
-        padding: 5px 10px;
-        border: 1px solid #4285f4;
-        background: white;
-        color: #4285f4;
-        cursor: pointer;
-        border-radius: 3px;
-      }
-
-      .pagination button.active {
-        background: #4285f4;
-        color: white;
-      }
-
-      .pagination button:hover {
-        background: #357ae8;
-        color: white;
-      }
+        /* Update main content styles for better centering */
+        main {
+          padding: 20px;
+          width: 100%;
+          max-width: 800px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 0 auto;
+          flex: 1;
+        }
+    
+        /* Add counter styles */
+        .counter {
+          margin: 10px 0;
+          font-weight: bold;
+          color: #333;
+        }
+    
+        /* Update table container */
+        .abm-section {
+          width: 100%;
+          max-width: 800px;
+          margin: 0 auto;
+        }
     </style>
+    
+    <!-- In the main section, add counter and update table structure -->
+    <main>
+        <section class="button-container">
+          <button id="add-turno" class="button button-group-1">Agregar Turno</button>
+        </section>
+        <section class="abm-section">
+          <p id="turnos-counter" class="counter">CANTIDAD DE TURNOS: 0</p>
+          <table id="turnos-table" class="responsive-table">
+            <thead>
+              <tr>
+                <th>Turno</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se cargará la lista de turnos dinámicamente -->
+            </tbody>
+          </table>
+          <!-- Add pagination controls -->
+          <div id="pagination-controls" class="pagination"></div>
+        </section>
 
-    <!-- Modal para formularios de Alta/Edición -->
-    <div id="modal-form" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span> <!-- Ícono para cerrar -->
-        <h3 id="modal-title">Agregar/Editar Turno</h3>
-        <form id="abm-form">
-          <label for="turno">Nombre del Turno</label>
-          <input type="text" id="turno" name="turno" required>
-          <button type="submit" class="button button-group-1">Guardar</button>
-        </form>
-      </div>
-    </div>
-  </main>
-  <footer>
-    <button onclick="location.href='home.html'" class="button button-black">Volver</button>
-  </footer>
-  <script type="module" src="js/firebase-config.js"></script>
-  <script type="module" src="js/auth.js"></script>
-  <script type="module" src="js/turnos.js"></script>
-</body>
-</html>
+        <!-- Add pagination styles -->
+        <style>
+          .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+          }
+    
+          .pagination button {
+            padding: 5px 10px;
+            border: 1px solid #4285f4;
+            background: white;
+            color: #4285f4;
+            cursor: pointer;
+            border-radius: 3px;
+          }
+    
+          .pagination button.active {
+            background: #4285f4;
+            color: white;
+          }
+    
+          .pagination button:hover {
+            background: #357ae8;
+            color: white;
+          }
+        </style>
+
+        <!-- Modal para formularios de Alta/Edición -->
+        <div id="modal-form" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span> <!-- Ícono para cerrar -->
+            <h3 id="modal-title">Agregar/Editar Turno</h3>
+            <form id="abm-form">
+              <label for="turno">Nombre del Turno</label>
+              <input type="text" id="turno" name="turno" required>
+              <button type="submit" class="button button-group-1">Guardar</button>
+            </form>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <button onclick="location.href='home.html'" class="button button-black">Volver</button>
+      </footer>
+      <script type="module" src="js/firebase-config.js"></script>
+      <script type="module" src="js/auth.js"></script>
+      <script type="module" src="js/turnos.js"></script>
+    </body>
+    </html>
 
 
