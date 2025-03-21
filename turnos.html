@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABM de Alumnos</title>
+  <title>Gestión de Turnos</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
     body {
@@ -13,21 +13,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      justify-content: center;
+      height: 100vh;
       background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
       color: #333;
     }
     header {
       text-align: center;
       margin-bottom: 20px;
-      width: 100%;
     }
     h1 {
       font-size: 2.5em;
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      color: #333;
-      padding: 20px 0;
     }
     .button-container {
       display: flex;
@@ -116,62 +113,17 @@
         margin: 10px;
       }
     }
-    .navigation {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    main {
-      padding: 20px;
-      width: 100%;
-      max-width: 800px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .counter {
-      text-align: center;
-      margin: 10px 0;
-      font-weight: bold;
-    }
-    .abm-section {
-      width: 100%;
-      max-width: 800px;
-    }
-    .pagination {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-      width: 100%;
-    }
-    .pagination button {
-      padding: 5px 10px;
-      border: 1px solid #4285f4;
-      background: white;
-      color: #4285f4;
-      cursor: pointer;
-      border-radius: 3px;
-      min-width: 40px;
-    }
-    .pagination button.active {
-      background: #4285f4;
-      color: white;
-    }
-    .pagination button:hover {
-      background: #357ae8;
-      color: white;
-    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Gestión de Turnos</h1> 
+    <h1>Gestión de Turnos</h1>
   </header>
   <main>
-    <!-- Contenedor para Turnos -->
+    <section class="button-container">
+      <button id="add-turno" class="button button-group-1">Agregar Turno</button>
+    </section>
     <section class="abm-section">
-      <h2>Turnos</h2>
-      <p id="turnos-counter" class="counter">CANTIDAD DE TURNOS: 0</p>
       <table id="turnos-table" class="responsive-table">
         <thead>
           <tr>
@@ -183,11 +135,12 @@
           <!-- Aquí se cargará la lista de turnos dinámicamente -->
         </tbody>
       </table>
-      <div id="pagination-controls" class="pagination"></div>
     </section>
+
+    <!-- Modal para formularios de Alta/Edición -->
     <div id="modal-form" class="modal">
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close">&times;</span> <!-- Ícono para cerrar -->
         <h3 id="modal-title">Agregar/Editar Turno</h3>
         <form id="abm-form">
           <label for="turno">Nombre del Turno</label>
