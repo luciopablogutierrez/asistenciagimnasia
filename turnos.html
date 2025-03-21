@@ -17,204 +17,225 @@
       background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
       color: #333;
     }
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin: 0;
-    }
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .button {
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin: 10px 0;
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-    }
-    .button:hover {
-      opacity: 0.9;
-    }
-    .button-group-1 {
-      background-color: #4285f4;
-    }
-    .button-black {
-      background-color: #333;
-    }
-    .button-black:hover {
-      background-color: #000;
-    }
-    .responsive-table {
-      width: 100%;
-      max-width: 800px;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    .responsive-table th, .responsive-table td {
-      border: 1px solid #000;
-      padding: 8px;
-      text-align: left;
-    }
-    .responsive-table th {
-      background-color: #000;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0,0,0);
-      background-color: rgba(0,0,0,0.4);
-      padding-top: 60px;
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 500px;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    @media (min-width: 600px) {
-      .button-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .button {
-        margin: 10px;
-      }
-    }
-    /* Add these styles directly in the main style tag */
-    .navigation {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    <style>
-        /* Update main content styles for better centering */
-        main {
-          padding: 20px;
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Gestión de Turnos</title>
+      <link rel="stylesheet" href="css/styles.css">
+      <style>
+        body {
+          font-family: 'Montserrat', sans-serif;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-height: 100vh; /* Changed from height to min-height */
+          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+          color: #333;
+        }
+        header {
+          text-align: center;
+          margin-bottom: 20px;
           width: 100%;
-          max-width: 800px;
+        }
+        h1 {
+          font-size: 2.5em;
+          margin: 0;
+          font-family: 'Montserrat', sans-serif;
+          color: #333;
+          padding: 20px 0;
+        }
+        .button-container {
           display: flex;
           flex-direction: column;
           align-items: center;
         }
-    
-        /* Add counter styles */
-        .counter {
-          text-align: center;
+        .button {
+          color: white;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1em;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
           margin: 10px 0;
-          font-weight: bold;
+          width: 100%;
+          max-width: 300px;
+          text-align: center;
         }
-    
-        /* Update table container */
-        .abm-section {
+        .button:hover {
+          opacity: 0.9;
+        }
+        .button-group-1 {
+          background-color: #4285f4;
+        }
+        .button-black {
+          background-color: #333;
+        }
+        .button-black:hover {
+          background-color: #000;
+        }
+        .responsive-table {
           width: 100%;
           max-width: 800px;
+          border-collapse: collapse;
+          margin: 20px 0;
         }
-    </style>
-    
-    <main>
-        <section class="button-container">
-          <button id="add-turno" class="button button-group-1">Agregar Turno</button>
-        </section>
-        <section class="abm-section">
-          <p id="turnos-counter" class="counter">CANTIDAD DE TURNOS: 0</p>
-          <table id="turnos-table" class="responsive-table">
-            <thead>
-              <tr>
-                <th>Turno</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Aquí se cargará la lista de turnos dinámicamente -->
-            </tbody>
-          </table>
-          <!-- Add pagination controls -->
-          <div id="pagination-controls" class="pagination"></div>
-        </section>
-
-        <!-- Add pagination styles -->
-        <style>
-          .pagination {
-            display: flex;
+        .responsive-table th, .responsive-table td {
+          border: 1px solid #000;
+          padding: 8px;
+          text-align: left;
+        }
+        .responsive-table th {
+          background-color: #000;
+        }
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0,0.4);
+          padding-top: 60px;
+        }
+        .modal-content {
+          background-color: #fefefe;
+          margin: 5% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          max-width: 500px;
+        }
+        .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        @media (min-width: 600px) {
+          .button-container {
+            flex-direction: row;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            width: 100%;
           }
+          .button {
+            margin: 10px;
+          }
+        }
+        /* Add these styles directly in the main style tag */
+        .navigation {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
     
-          .pagination button {
-            padding: 5px 10px;
-            border: 1px solid #4285f4;
-            background: white;
-            color: #4285f4;
-            cursor: pointer;
-            border-radius: 3px;
-            min-width: 40px;
-          }
-    
-          .pagination button.active {
-            background: #4285f4;
-            color: white;
-          }
-    
-          .pagination button:hover {
-            background: #357ae8;
-            color: white;
-          }
+        <style>
+            /* Update main content styles for better centering */
+            main {
+              padding: 20px;
+              width: 100%;
+              max-width: 800px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+        
+            /* Add counter styles */
+            .counter {
+              text-align: center;
+              margin: 10px 0;
+              font-weight: bold;
+            }
+        
+            /* Update table container */
+            .abm-section {
+              width: 100%;
+              max-width: 800px;
+            }
         </style>
-
-        <!-- Modal para formularios de Alta/Edición -->
-        <div id="modal-form" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span> <!-- Ícono para cerrar -->
-            <h3 id="modal-title">Agregar/Editar Turno</h3>
-            <form id="abm-form">
-              <label for="turno">Nombre del Turno</label>
-              <input type="text" id="turno" name="turno" required>
-              <button type="submit" class="button button-group-1">Guardar</button>
-            </form>
-          </div>
-        </div>
-      </main>
-      <footer>
-        <button onclick="location.href='home.html'" class="button button-black">Volver</button>
-      </footer>
-      <script type="module" src="js/firebase-config.js"></script>
-      <script type="module" src="js/auth.js"></script>
-      <script type="module" src="js/turnos.js"></script>
-    </body>
-    </html>
+        
+        <main>
+            <section class="button-container">
+              <button id="add-turno" class="button button-group-1">Agregar Turno</button>
+            </section>
+            <section class="abm-section">
+              <p id="turnos-counter" class="counter">CANTIDAD DE TURNOS: 0</p>
+              <table id="turnos-table" class="responsive-table">
+                <thead>
+                  <tr>
+                    <th>Turno</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Aquí se cargará la lista de turnos dinámicamente -->
+                </tbody>
+              </table>
+              <!-- Add pagination controls -->
+              <div id="pagination-controls" class="pagination"></div>
+            </section>
+    
+            <!-- Add pagination styles -->
+            <style>
+              .pagination {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin: 20px 0;
+                width: 100%;
+              }
+        
+              .pagination button {
+                padding: 5px 10px;
+                border: 1px solid #4285f4;
+                background: white;
+                color: #4285f4;
+                cursor: pointer;
+                border-radius: 3px;
+                min-width: 40px;
+              }
+        
+              .pagination button.active {
+                background: #4285f4;
+                color: white;
+              }
+        
+              .pagination button:hover {
+                background: #357ae8;
+                color: white;
+              }
+            </style>
+    
+            <!-- Modal para formularios de Alta/Edición -->
+            <div id="modal-form" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span> <!-- Ícono para cerrar -->
+                <h3 id="modal-title">Agregar/Editar Turno</h3>
+                <form id="abm-form">
+                  <label for="turno">Nombre del Turno</label>
+                  <input type="text" id="turno" name="turno" required>
+                  <button type="submit" class="button button-group-1">Guardar</button>
+                </form>
+              </div>
+            </div>
+          </main>
+          <footer>
+            <button onclick="location.href='home.html'" class="button button-black">Volver</button>
+          </footer>
+          <script type="module" src="js/firebase-config.js"></script>
+          <script type="module" src="js/auth.js"></script>
+          <script type="module" src="js/turnos.js"></script>
+        </body>
+        </html>
 
 
